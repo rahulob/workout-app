@@ -1,0 +1,116 @@
+.navbar {
+  background-color: #2c313c;
+  color: white;
+  width: max-content;
+  margin: 1rem auto;
+  border-radius: 5px;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.742);
+
+  .hamburger {
+    display: none;
+  }
+
+  .nav_ul {
+    list-style-type: none;
+    display: flex;
+    gap: 0.1rem;
+
+    li {
+      text-align: center;
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: all 0.3s, visibility 2s;
+
+      &:hover {
+        background-color: rgba(240, 255, 255, 0.432);
+      }
+
+      a {
+        font-size: 1.5rem;
+        padding: inherit;
+      }
+
+      &.active {
+        display: block;
+        visibility: visible;
+        background-color: azure;
+        color: black;
+      }
+    }
+
+  }
+
+  @media (max-width:640px) {
+    margin-top: 0;
+    width: 100%;
+
+    .nav_ul {
+      justify-content: center;
+
+      li {
+        display: none;
+        visibility: hidden;
+        flex: 1;
+      }
+
+      &.show {
+        flex-direction: column;
+
+        li {
+          display: block;
+          visibility: visible;
+        }
+      }
+    }
+
+    .hamburger {
+      // background-color: aqua;
+      display: block;
+      width: 32px;
+      height: 27px;
+      position: absolute;
+      top: 1rem;
+      left: 2rem;
+      z-index: 1;
+
+      input {
+        position: absolute;
+        width: inherit;
+        height: inherit;
+        cursor: pointer;
+        opacity: 0;
+        z-index: 2;
+        -webkit-touch-callout: none;
+      }
+
+      div {
+        position: absolute;
+        width: inherit;
+        height: 4px;
+        margin-bottom: 5px;
+        position: relative;
+        background: black;
+        border-radius: 5px;
+        z-index: 1;
+        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+          background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+          opacity 0.55s ease;
+      }
+
+      input:checked~div {
+        opacity: 1;
+        transform: rotate(45deg) translate(-6px, -6px);
+      }
+
+      input:checked~div:nth-last-child(3) {
+        opacity: 0;
+        transform: rotate(0deg) scale(0.2, 0.2);
+      }
+
+      input:checked~div:nth-last-child(2) {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}

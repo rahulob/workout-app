@@ -49,9 +49,15 @@
       justify-content: center;
 
       li {
+        padding: 0.5rem;
         display: none;
         visibility: hidden;
         flex: 1;
+
+        a {
+          display: inline-block;
+          width: 100%;
+        }
       }
 
       &.show {

@@ -1,0 +1,24 @@
+.main {
+  .title {
+    color: var(--primary-color);
+    text-shadow: rgba(0, 0, 0, 0.742) 3px 3px;
+  }
+
+  .data {
+    // background-color: var(--primary-color);
+    // border-radius: 5px;
+    padding: 0.5rem;
+    margin: auto;
+    width: 100%;
+
+    .add_excercise {
+      width: 100%;
+      font-size: 2rem;
+      padding: 1rem;
+    }
+
+    @media (min-width:500px) {
+      width: 500px;
+    }
+  }
+}

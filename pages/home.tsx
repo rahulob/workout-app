@@ -1,17 +1,9 @@
-import Head from 'next/head'
 import React from 'react'
+import Data from '../Components/Data'
 
-type Props = {}
 
-export default function Home({ }: Props) {
+export default function Home() {
   return (
-    <>
-      <Head>
-        <title>Home</title>
-      </Head>
-      <div>
-        <h1>Home</h1>
-      </div>
-    </>
+    <Data title="Home" />
   )
 }

@@ -7,12 +7,12 @@ export default function Navbar() {
   const [checked, setChecked] = useState(false)
   return (
     <nav className={styles.navbar}>
-      <div className={styles.hamburger}>
+      {/* <div className={styles.hamburger}>
         <input type="checkbox" checked={checked} onChange={() => setChecked(!checked)} />
         <div className='bar'></div>
         <div className='bar'></div>
         <div className='bar'></div>
-      </div>
+      </div> */}
       <ul className={styles.nav_ul + " " + (checked ? styles.show : '')} onClick={() => setChecked(!checked)}>
         <List href="/home" name="Home" />
         <List href="/history" name="History" />

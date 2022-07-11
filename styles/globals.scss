@@ -1,11 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Edu+SA+Beginner&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 
 html,
 body {
-  background-color: #282c34;
+  background-color: var(--text-color-1);
   padding: 0;
   margin: 0;
+  font-family: 'Bebas Neue', Roboto;
+  // overflow: hidden;
 }
 
 a {
@@ -14,13 +16,37 @@ a {
 }
 
 * {
-  font-family: 'Edu SA Beginner', cursive;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   box-sizing: border-box;
+  letter-spacing: 1px;
   margin: 0;
   padding: 0;
 }
 
 h1 {
-  color: aliceblue;
   text-align: center;
+  color: var(--text-color);
+}
+
+:root {
+  --text-color-1: #e63946ff;
+  --primary-color: #f1faeeff;
+  --hover-color: #757577;
+  --secondary-color: #a8dadcff;
+  --button-color: #457b9dff;
+  --text-color: #1d3557ff;
+
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  background-color: var(--button-color);
+  color: var(--primary-color);
+  border-radius: 5px;
 }

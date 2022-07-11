@@ -1,15 +1,8 @@
-import Head from 'next/head'
 import React from 'react'
+import Data from '../Components/Data'
 
 export default function History() {
   return (
-    <>
-      <Head>
-        <title>History</title>
-      </Head>
-      <div>
-        <h1>History</h1>
-      </div>
-    </>
+    <Data title='History' />
   )
 }

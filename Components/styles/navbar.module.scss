@@ -24,16 +24,21 @@
       transition: all 0.4s;
       color: var(--text-color);
 
-      &:hover {
-        color: var(--hover-color);
-        transform: scale(1.2, 1.2);
+      @media (min-width:640px) {
+        &:hover {
+          color: var(--hover-color);
+          transform: scale(1.2, 1.2);
+        }
       }
+
 
       &.active {
         background-color: var(--button-color);
         color: var(--primary-color);
         display: block;
         visibility: visible;
+        transform: scale(1, 1);
+
       }
 
 
@@ -52,17 +57,19 @@
 
     .nav_ul {
       justify-content: center;
+      flex-direction: column;
 
       li {
         border-radius: 0;
         padding: 0.5rem;
+        overflow: hidden;
+        width: 100%;
         display: none;
-        visibility: hidden;
-        flex: 1;
+        transition: all 2s;
 
-        a {
-          display: inline-block;
-          width: 100%;
+        &.active {
+          height: 100%;
+          max-height: 10rem;
         }
       }
 
@@ -71,58 +78,57 @@
 
         li {
           display: block;
-          visibility: visible;
         }
       }
     }
 
-    .hamburger {
-      // background-color: aqua;
-      display: block;
-      width: 32px;
-      height: 27px;
-      position: absolute;
-      top: 1rem;
-      left: 2rem;
-      z-index: 1;
+    // .hamburger {
+    //   // background-color: aqua;
+    //   display: block;
+    //   width: 32px;
+    //   height: 27px;
+    //   position: absolute;
+    //   top: 1rem;
+    //   left: 2rem;
+    //   z-index: 1;
 
-      input {
-        position: absolute;
-        width: inherit;
-        height: inherit;
-        cursor: pointer;
-        opacity: 0;
-        z-index: 2;
-        -webkit-touch-callout: none;
-      }
+    //   input {
+    //     position: absolute;
+    //     width: inherit;
+    //     height: inherit;
+    //     cursor: pointer;
+    //     opacity: 0;
+    //     z-index: 2;
+    //     -webkit-touch-callout: none;
+    //   }
 
-      div {
-        position: absolute;
-        width: inherit;
-        height: 4px;
-        margin-bottom: 5px;
-        position: relative;
-        background: black;
-        border-radius: 5px;
-        z-index: 1;
-        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
-          background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
-          opacity 0.55s ease;
-      }
+    //   div {
+    //     position: absolute;
+    //     width: inherit;
+    //     height: 4px;
+    //     margin-bottom: 5px;
+    //     position: relative;
+    //     background: black;
+    //     border-radius: 5px;
+    //     z-index: 1;
+    //     transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+    //       background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+    //       opacity 0.55s ease;
+    //   }
 
-      input:checked~div {
-        opacity: 1;
-        transform: rotate(45deg) translate(-6px, -6px);
-      }
+    //   input:checked~div {
+    //     opacity: 1;
+    //     transform: rotate(45deg) translate(-6px, -6px);
+    //   }
 
-      input:checked~div:nth-last-child(3) {
-        opacity: 0;
-        transform: rotate(0deg) scale(0.2, 0.2);
-      }
+    //   input:checked~div:nth-last-child(3) {
+    //     opacity: 0;
+    //     transform: rotate(0deg) scale(0.2, 0.2);
+    //   }
 
-      input:checked~div:nth-last-child(2) {
-        transform: rotate(-45deg);
-      }
-    }
+    //   input:checked~div:nth-last-child(2) {
+    //     transform: rotate(-45deg);
+    //   }
+    // }
   }
 }

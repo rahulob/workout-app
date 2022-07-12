@@ -14,7 +14,7 @@ export default function Navbar() {
         <div className='bar'></div>
       </div> */}
       <ul className={styles.nav_ul + " " + (checked ? styles.show : '')} onClick={() => setChecked(!checked)}>
-        <List href="/home" name="Home" />
+        <List href="/" name="Home" />
         <List href="/history" name="History" />
         <List href="/about" name="About" />
         <List href="/account" name="Account" />

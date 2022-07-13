@@ -48,8 +48,11 @@ export const AuthContextProvider = ({
     await signOut(auth)
   }
 
+  const signUp = (email: string, password: string) => {
+    return createUserWithEmailAndPassword(auth, email, password)
+  }
   return (
-    <AuthContext.Provider value={{ user, signIn, logOut, signInWithGoogle }}>
+    <AuthContext.Provider value={{ user, signIn, logOut, signInWithGoogle, signUp }}>
       {loading ? null : children}
     </AuthContext.Provider>
   )

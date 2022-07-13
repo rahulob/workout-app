@@ -14,23 +14,26 @@ export default function Login({ }: Props) {
   function handleCancel() {
     router.push('/about')
   }
-
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-
-  const handleSignIn = (e: any) => {
+  const handleSignUp = (e: any) => {
     e.preventDefault()
-    context.signIn(email, password)
+    if (password !== passwordConfirm) {
+      toast.error("Password does not match!")
+      return
+    }
+    context.signUp(email, password)
       .then(() => {
-        toast.success("Signed In")
+        toast.success("Signed Up")
         router.push('/home')
       })
       .catch(() => toast.error('Invalid credentials'))
   }
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [passwordConfirm, setPasswordConfirm] = useState('')
   return (
     <>
       <Head>
-        <title>Sign In</title>
+        <title>Sign up</title>
       </Head>
       <div className={styles.login} onClick={handleCancel}>
       </div>
@@ -38,7 +41,7 @@ export default function Login({ }: Props) {
         <button className={styles.cancel} onClick={handleCancel}>
           <Image src='/close.svg' width={40} height={40} />
         </button>
-        <h1>Sign In</h1>
+        <h1>Sign Up</h1>
         <TextField
           type='email' label='Email' required
           value={email}
@@ -46,18 +49,19 @@ export default function Login({ }: Props) {
         />
         <TextField
           type='password' label='Password' required
-          value={password}
+          value={password} autoComplete="new-password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button
-          variant='contained' type='submit'
-          className={styles.Button}
-          onClick={handleSignIn}
-        >
+        <TextField
+          type='password' label='Confirm Password' required
+          value={passwordConfirm} autoComplete="new-password"
+          onChange={(e) => setPasswordConfirm(e.target.value)}
+        />
+        <Button variant='contained' type='submit' onClick={handleSignUp}><span>Sign UP</span></Button>
+        <p>OR</p>
+        <Button variant='contained' onClick={() => router.push('/login')}>
           <span>Sign In</span>
         </Button>
-        <p>OR</p>
-        <Button variant='contained' onClick={() => router.push('/signup')}><span>Sign UP</span></Button>
         <Button variant='outlined' onClick={context.signInWithGoogle}>
           <Image src='/google-logo.svg' width={30} height={30} />
           <span style={{ marginLeft: '10px' }}>Continue with Google</span>

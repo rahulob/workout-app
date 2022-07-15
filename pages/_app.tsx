@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <AuthContextProvider>
       <Navbar />
       <Component {...pageProps} />
-      <Toaster containerClassName='toaster' />
+      <Toaster containerClassName='toaster' position='top-right' />
     </AuthContextProvider>
   )
 }

@@ -11,7 +11,8 @@ type Props = {}
 export default function Login({ }: Props) {
   let context = useAuth()
   const router = useRouter()
-  function handleCancel() {
+  function handleCancel(e: any) {
+    e.preventDefault()
     router.push('/about')
   }
 

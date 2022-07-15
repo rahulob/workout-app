@@ -40,7 +40,7 @@ export const AuthContextProvider = ({
   const signInWithGoogle = () => {
     const provider = new GoogleAuthProvider();
     provider.setCustomParameters({ prompt: 'select_account' })
-    return signInWithPopup(auth, provider).catch(() => { })
+    return signInWithPopup(auth, provider).catch((e) => { console.log(e) })
   }
 
   const logOut = async () => {

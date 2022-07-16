@@ -1,17 +1,35 @@
 import React, { useState } from 'react'
 import styles from './styles/data-item.module.scss'
+import { doc, setDoc, deleteField } from 'firebase/firestore'
+import { db } from '../lib/firebase'
+import { useAuth } from '../lib/AuthContext'
 
-type Props = any
+type Props = {
+  name: string,
+  id: string,
+  sets: number
+}
 
 export default function DataItem(props: Props) {
-  function handleSet(value: number) {
-    if (sets < 3 && value === -1) {
-      return
-    }
-    setSets(sets + value)
-  }
+  const { user } = useAuth()
   const [sets, setSets] = useState(props.sets)
   const [showReps, setShowReps] = useState(false)
+
+  const addSet = async () => {
+    const userRef = doc(db, 'data', user)
+    await setDoc(userRef, {
+      'Date day': {
+        [props.id]: {
+          reps: {
+            [sets + 1]: 0,
+          }
+        }
+      }
+    }, { merge: true })
+    console.log('added a set')
+    setSets(sets + 1)
+  }
+
   // const [reps, setReps] = useState(props.reps)
   let reps = []
 
@@ -23,9 +41,8 @@ export default function DataItem(props: Props) {
     <div className={styles.main}>
       <span className={styles.title} onClick={() => setShowReps(!showReps)}>{props.name}</span>
       <span className={styles.sets}>
-        <button onClick={() => handleSet(1)}>+</button>
         Sets <p>{sets}</p>
-        <button onClick={() => handleSet(-1)}>-</button>
+        <button onClick={addSet}>+</button>
       </span>
       <div className={styles.reps + ' ' + (showReps ? styles.show : '')}>
         {reps}

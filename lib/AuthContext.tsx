@@ -22,7 +22,7 @@ export const AuthContextProvider = ({
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         setUser(user.uid)
       } else {
@@ -40,7 +40,7 @@ export const AuthContextProvider = ({
   const signInWithGoogle = () => {
     const provider = new GoogleAuthProvider();
     provider.setCustomParameters({ prompt: 'select_account' })
-    return signInWithPopup(auth, provider).catch((e) => { console.log(e) })
+    return signInWithPopup(auth, provider)
   }
 
   const logOut = async () => {
@@ -53,7 +53,7 @@ export const AuthContextProvider = ({
   }
   return (
     <AuthContext.Provider value={{ user, signIn, logOut, signInWithGoogle, signUp }}>
-      {loading ? null : children}
+      {!loading && children}
     </AuthContext.Provider>
   )
 }

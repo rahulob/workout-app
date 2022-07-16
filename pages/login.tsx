@@ -9,8 +9,11 @@ import styles from '../styles/login.module.scss'
 type Props = {}
 
 export default function Login({ }: Props) {
-  let context = useAuth()
   const router = useRouter()
+  let context = useAuth()
+
+  if (context.user)
+    router.push('/home')
   function handleCancel(e: any) {
     e.preventDefault()
     router.push('/about')
@@ -27,6 +30,15 @@ export default function Login({ }: Props) {
         router.push('/home')
       })
       .catch(() => toast.error('Invalid credentials'))
+  }
+  const googleSignIn = (e: any) => {
+    e.preventDefault()
+    context.signInWithGoogle()
+      .then(() => {
+        toast.success("Signed In")
+        router.push('/home')
+      })
+      .catch(() => toast.error('Sign In failed. Try Again!'))
   }
   return (
     <>
@@ -59,7 +71,7 @@ export default function Login({ }: Props) {
         </Button>
         <p>OR</p>
         <Button variant='contained' onClick={() => router.push('/signup')}><span>Sign UP</span></Button>
-        <Button variant='outlined' onClick={context.signInWithGoogle}>
+        <Button variant='outlined' onClick={googleSignIn}>
           <Image src='/google-logo.svg' width={30} height={30} />
           <span style={{ marginLeft: '10px' }}>Continue with Google</span>
         </Button>

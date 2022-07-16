@@ -11,6 +11,9 @@ type Props = {}
 export default function Login({ }: Props) {
   let context = useAuth()
   const router = useRouter()
+
+  if (context.user)
+    router.push('/home')
   function handleCancel() {
     router.push('/about')
   }
@@ -26,6 +29,15 @@ export default function Login({ }: Props) {
         router.push('/home')
       })
       .catch(() => toast.error('Invalid credentials'))
+  }
+  const googleSignIn = (e: any) => {
+    e.preventDefault()
+    context.signInWithGoogle()
+      .then(() => {
+        toast.success("Signed In")
+        router.push('/home')
+      })
+      .catch(() => toast.error('Sign In failed. Try Again!'))
   }
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -62,7 +74,7 @@ export default function Login({ }: Props) {
         <Button variant='contained' onClick={() => router.push('/login')}>
           <span>Sign In</span>
         </Button>
-        <Button variant='outlined' onClick={context.signInWithGoogle}>
+        <Button variant='outlined' onClick={googleSignIn}>
           <Image src='/google-logo.svg' width={30} height={30} />
           <span style={{ marginLeft: '10px' }}>Continue with Google</span>
         </Button>

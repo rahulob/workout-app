@@ -5,6 +5,7 @@ import { db } from '../lib/firebase'
 import { useAuth } from '../lib/AuthContext'
 
 type Props = {
+  date_id: string,
   name: string,
   id: string,
   sets: number
@@ -18,7 +19,7 @@ export default function DataItem(props: Props) {
   const addSet = async () => {
     const userRef = doc(db, 'data', user)
     await setDoc(userRef, {
-      'Date day': {
+      [props.date_id]: {
         [props.id]: {
           reps: {
             [sets + 1]: 0,

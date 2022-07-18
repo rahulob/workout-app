@@ -20,14 +20,6 @@ export default function Data({ title }: Props) {
         <h1 className={styles.title}>Today</h1>
         <div className={styles.data}>
           {/* Todo: Map data items here*/}
-          <DataItem name='Excercise' id='1' sets={2} />
-          <DataItem name='Excercise' id='1' sets={2} />
-          <DataItem name='Excercise' id='1' sets={2} />
-          <DataItem name='Excercise' id='1' sets={2} />
-          <DataItem name='Excercise' id='1' sets={2} />
-          <DataItem name='Excercise' id='1' sets={2} />
-          <DataItem name='Excercise' id='1' sets={2} />
-          <DataItem name='Excercise' id='1' sets={2} />
           {/*  */}
           <AddExcercise />
         </div>

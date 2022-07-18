@@ -1,12 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 html,
 body {
-  background-color: var(--text-color-1);
+  background-color: #555;
   padding: 0;
   margin: 0;
-  font-family: 'Bebas Neue', Roboto;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   // overflow: hidden;
 }
 
@@ -22,14 +24,12 @@ a {
   -ms-user-select: none;
   user-select: none;
   box-sizing: border-box;
-  letter-spacing: 1px;
   margin: 0;
   padding: 0;
 }
 
 h1 {
-  text-align: center;
-  color: var(--text-color);
+  font-size: 2rem;
 }
 
 :root {
@@ -42,7 +42,7 @@ h1 {
 
 }
 
-button {
+butto {
   font-family: inherit;
   border: none;
   cursor: pointer;
@@ -51,7 +51,6 @@ button {
   border-radius: 5px;
 }
 
-.toaster {
-  letter-spacing: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+.border-3 {
+  border-width: 3px;
 }

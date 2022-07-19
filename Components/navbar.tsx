@@ -35,10 +35,11 @@ function ListItem(props: {
   useEffect(() => {
     setPath(window.location.pathname)
   })
-  const active = (path === props.href) ? ' scale-150 text-slate-900' : ''
+  const active = (path === props.href) ? { "color": 'black', "transform": "scale(1.5,1.5)" } : {}
   return (
     <Link href={props.href}>
-      <li className={'list-item transition-all duration-300 md:hover:scale-150 md:hover:text-slate-900 text-slate-500' + active}>
+      <li className='list-item transition-all duration-300 md:hover:scale-150 md:hover:text-slate-900 text-slate-500'
+        style={active}>
         {props.children}
         {/* <span className="list-item-name">Home</span> */}
       </li>

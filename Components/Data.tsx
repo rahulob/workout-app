@@ -37,7 +37,7 @@ const AddExcercise = () => {
   const [sets, setSets] = useState(0)
 
   const addExcercise = async () => {
-    if (!excerciseName && sets)
+    if (excerciseName === '' && sets <= 0)
       return
     let reps: any = {}
     for (let i = 1; i <= sets; i++) {
